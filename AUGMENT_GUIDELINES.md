@@ -5,92 +5,84 @@ These guidelines help ensure that the AI assistant provides high-quality, consis
 ## Core Guidelines
 
 1. **MCP Server Management**: Always verify MCP servers are running before starting tasks. If servers are not running, start them using the run_all_mcp_servers.sh script.
-    
+
 2. **Testing Protocol**: Thoroughly test all implementations before marking tasks as complete. Write unit tests when appropriate and verify functionality across different scenarios.
-    
+
 3. **Tool Selection**: Use MCP server tools when interacting with external systems, web content, or performing complex operations. Choose the most appropriate tool for each specific task.
-    
+
 4. **Documentation Standards**: Create comprehensive documentation including setup instructions, usage examples, and API references. Document both code and processes clearly.
-    
+
 5. **Project Structure**: Maintain the established project organization with BtAgent and AgentKnowledge as primary folders. Place new files in appropriate locations following existing patterns.
-    
+
 6. **Incremental Development**: Break complex tasks into smaller, manageable steps. Validate each step before proceeding to the next one.
-    
+
 7. **Error Handling**: Implement robust error handling with informative error messages. Consider edge cases and provide graceful fallbacks.
-    
+
 8. **Performance Optimization**: Monitor resource usage and optimize code for efficiency. Consider caching strategies and asynchronous processing when appropriate.
-    
+
 9. **Security Practices**: Follow security best practices when handling sensitive data. Never expose API keys or credentials in code or logs.
-    
+
 10. **User Experience**: Design interfaces and interactions with the end user in mind. Provide clear feedback and intuitive workflows.
-    
+
 11. **Task Completion Checklist**: Before marking a task complete, ensure all code is tested, documented, and follows project standards. Document all changes in README files and the testing webpage.
 
-## Implementation Best Practices
-
-### Code Quality
-
-- Write clean, readable, and maintainable code
-- Follow PEP 8 style guidelines for Python code
-- Use meaningful variable and function names
-- Add comments to explain complex logic
-- Implement proper error handling
-
-### Documentation
-
-- Document all functions, classes, and modules
-- Include examples in documentation
-- Update README files when adding new features
-- Create user guides for complex functionality
-- Document API endpoints and parameters
-
-### Testing
-
-- Write unit tests for all new functionality
-- Test edge cases and error conditions
-- Verify performance under load
-- Test across different environments
-- Document test procedures and results
-
-### Security
-
-- Never hardcode credentials in source code
-- Use environment variables for sensitive information
-- Implement proper authentication and authorization
-- Validate all user inputs
-- Follow the principle of least privilege
-
-### Deployment
-
-- Document deployment procedures
-- Create backup and recovery plans
-- Monitor system performance
-- Implement logging for troubleshooting
-- Create alerts for critical issues
-
-## Project-Specific Guidelines
-
-### AvitoScraping
-
-- Implement rate limiting to avoid being blocked
-- Rotate user agents and IP addresses
-- Handle pagination properly
-- Extract all required data fields
-- Store data in the appropriate database tables
-- Update data daily as specified
+## Specific Guidelines for Business Trucks Project
 
 ### Redis AI Tools
 
-- Optimize vector search for performance
-- Implement proper caching strategies
-- Handle large datasets efficiently
-- Ensure real-time updates work correctly
-- Implement proper error handling for Redis operations
+1. **Vector Search**: Implement vector search using Redis as the backend. Use the SimpleVectorStore class for basic functionality.
 
-### Business Trucks Website
+2. **RAG System**: Implement a Retrieval-Augmented Generation system using Redis and LangChain. Use the SimpleRAG class for basic functionality.
 
-- Ensure all content is in Russian
-- Follow the brand guidelines
-- Optimize for mobile devices
-- Implement proper SEO
-- Ensure fast loading times
+3. **Session Management**: Use Redis for session management. Store conversation history and user preferences in Redis.
+
+4. **Caching**: Use Redis for caching API responses and expensive computations. Implement TTL (Time-To-Live) for cache entries.
+
+### AvitoScraping
+
+1. **Rate Limiting**: Implement rate limiting to avoid being blocked by Avito.ru. Use random delays between requests.
+
+2. **Proxy Rotation**: Use proxy rotation to avoid IP bans. Implement fallback mechanisms for failed proxies.
+
+3. **Captcha Handling**: Implement captcha detection and solving. Use captcha solving services when necessary.
+
+4. **Data Schema**: Follow the established data schema for vehicle data. Include all required fields and validate data before storing.
+
+5. **Incremental Updates**: Implement incremental updates to avoid re-scraping all data. Use timestamps to track changes.
+
+### LangChain Integration
+
+1. **Custom Components**: Create custom LangChain components for the Business Trucks project. Implement CustomEmbeddings and CustomLLM classes.
+
+2. **Chain Construction**: Use LangChain's chain construction to create complex workflows. Implement ConversationalRetrievalChain for chat functionality.
+
+3. **Tool Integration**: Integrate LangChain with external tools using the Tool class. Implement tools for vehicle search, financing calculation, etc.
+
+4. **Agent Configuration**: Configure LangChain agents with appropriate tools and memory. Use the AgentExecutor class for agent execution.
+
+5. **Prompt Engineering**: Create effective prompts for LangChain components. Include system messages, user messages, and examples.
+
+### Streamlit Dashboard
+
+1. **Page Organization**: Organize the dashboard into logical pages. Use st.sidebar for navigation.
+
+2. **Data Visualization**: Create informative visualizations for vehicle data. Use appropriate chart types for different data.
+
+3. **User Interaction**: Implement intuitive user interactions. Use appropriate input widgets for different data types.
+
+4. **Error Handling**: Implement error handling for user inputs and API calls. Display informative error messages.
+
+5. **Performance**: Optimize dashboard performance. Use caching and session state to avoid redundant computations.
+
+## Implementation Checklist
+
+Before marking a task as complete, ensure that:
+
+- [ ] All code is tested and working correctly
+- [ ] Documentation is complete and accurate
+- [ ] Error handling is implemented
+- [ ] Performance is optimized
+- [ ] Security best practices are followed
+- [ ] User experience is considered
+- [ ] Changes are documented in README files
+- [ ] Changes are documented in the testing webpage
